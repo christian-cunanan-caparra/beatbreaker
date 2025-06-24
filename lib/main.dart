@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'main_menu.dart';  // Add this import
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,6 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
           content: Text('Welcome, ${_usernameController.text}! 🕺💃'),
           backgroundColor: const Color(0xFFFF00FF),
         ),
+      );
+      // Add navigation to MainMenuScreen after successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const MainMenuScreen()),
       );
     }
   }
@@ -230,10 +236,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           backgroundColor: const Color(0xFFFF00FF),
         ),
       );
-      Navigator.pop(context, {
-        'username': _usernameController.text,
-        'password': _passwordController.text
-      });
+      // Replace pop with pushReplacement to MainMenuScreen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const MainMenuScreen()),
+      );
     }
   }
 
